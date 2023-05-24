@@ -44,5 +44,6 @@ $record_array = [
   ],
 ];
 
+// Conversione dell'array di oggetti da formato php a formato json
 header('Content-type: application/json');
 echo json_encode($record_array);

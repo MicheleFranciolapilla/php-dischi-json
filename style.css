@@ -3,6 +3,7 @@
     background-color: #1D2D3C;
 }
 
+/* Layer opaco attivo al click su card */
 #overlay
 {
     position: absolute;
@@ -15,6 +16,7 @@
     border-radius: 5px;
 }
 
+/* Contenitore del layer opaco e della card in formato maxi */
 #full_screen_card
 {
     position: absolute;
@@ -28,6 +30,7 @@
     text-align: center;
 }
 
+/* Immagine della card in formato maxi */
 #full_screen_card img
 {
     width: 100%;

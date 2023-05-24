@@ -19,7 +19,9 @@ createApp(
         return  {
             api_url         : "./api.php",
             api_data        : "",
+            // overlay_bool, quando settato a true consente il passaggio alla modalità full screen con card in formato maxi su overlay opaco
             overlay_bool    : false,
+            // oggetto che conterrà i dati della card cliccata
             clicked_card    : null
         }
     },
@@ -28,10 +30,12 @@ createApp(
     },
     mounted()
     {
+        // Chiamata alla API per acquisizione dati
         this.call_to_api();
     },
     methods: 
     {
+        // Metodo incaricato della chiamata alla API
         call_to_api()
         {
             axios.get(this.api_url).then( res =>
@@ -40,6 +44,7 @@ createApp(
                 });
         },
 
+        // Metodo che consente il passaggio alla modalità full screen con card in formato maxi su overlay opaco
         full_screen(index)
         {
             this.overlay_bool = true;
