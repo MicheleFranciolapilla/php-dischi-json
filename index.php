@@ -9,7 +9,11 @@
     <title>Dischi JSON</title>
 </head>
 <body>
-    
+    <div id="vue_app" class="vh-100">
+        <header>
+            <h1 class="text-center text-primary">Spotify Records</h1>
+        </header>
+    </div>
     <!-- CDN Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- CDN Axios -->

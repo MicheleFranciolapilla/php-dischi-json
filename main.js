@@ -8,3 +8,34 @@
 // Solo a questo punto sarà utile passare alla lettura della lista da un file JSON.
 // Bonus
 // Al click su un disco, recuperare e mostrare i dati del disco selezionato.
+
+// Script Vue 3
+const {createApp} = Vue 
+
+createApp(
+{
+    data() 
+    {
+        return  {
+            api_url     : "./api.php",
+            api_data    : ""
+                }
+    },
+    created()
+    {
+    },
+    mounted()
+    {
+        this.call_to_api();
+    },
+    methods: 
+    {
+        call_to_api()
+        {
+            axios.get(this.api_url).then( res =>
+                {
+                    this.api_data = res.data;
+                });
+        }
+    }
+}).mount('#vue_app')
