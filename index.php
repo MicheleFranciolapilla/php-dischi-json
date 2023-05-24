@@ -34,16 +34,16 @@
                 </div>
             </div>
         </main>
-        <div v-if="overlay_bool" id="overlay">
-            <div class="card">
-                <img :src="clicked_card.poster" class="card-img-top" :alt="clicked_card.author">
-                <div class="card-body m-0 p-0 text-center text-white">
+        <div v-if="overlay_bool" id="full_screen">
+            <div id="overlay">
+            </div>
+                <img :src="clicked_card.poster" class="card-img-top mx-auto my-2" :alt="clicked_card.author">
+                <div class="card-body mx-auto p-1 text-center text-white">
                     <h6 class="card-title">{{ clicked_card.title }}</h6>
                     <span class="card-text text-info" style="font-size: medium;">{{ clicked_card.author }}</span>
                     <span class="card-text d-block" style="font-size: small;">{{ clicked_card.year }}</span>
                     <h6 class="text-success">{{clicked_card.genre}}</h6>
                 </div>
-            </div>
         </div>
     </div>
     <!-- CDN Bootstrap 5 -->

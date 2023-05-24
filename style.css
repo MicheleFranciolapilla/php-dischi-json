@@ -15,6 +15,16 @@
     border-radius: 5px;
 }
 
+#full_screen img
+{
+    position: absolute;
+    width: 33%;
+    aspect-ratio: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 header
 {
     height: 7vh;
