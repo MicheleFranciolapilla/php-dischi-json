@@ -3,6 +3,18 @@
     background-color: #1D2D3C;
 }
 
+#overlay
+{
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    left: 2.5%;
+    top: 2.5%;
+    background-color: rgb(20, 20, 42);
+    opacity: 0.85;
+    border-radius: 5px;
+}
+
 header
 {
     height: 7vh;
@@ -28,20 +40,22 @@ main > #card_set
     gap: 50px;
 }
 
-.card
+#card_set .card
 {
     flex-basis: calc((100% - 100px) / 3);
     height: calc((100% - 50px) / 2);
     background-color: #112030;
+    border: 3px solid transparent;
 }
 
-.card:hover
+#card_set .card:hover
 {
     cursor: pointer;
     background-color: blue;
+    border-color: yellowgreen;
 }
 
-.card > img
+#card_set .card > img
 {
     width: 65%;
 }

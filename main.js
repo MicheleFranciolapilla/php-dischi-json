@@ -17,9 +17,11 @@ createApp(
     data() 
     {
         return  {
-            api_url     : "./api.php",
-            api_data    : ""
-                }
+            api_url         : "./api.php",
+            api_data        : "",
+            overlay_bool    : false,
+            clicked_card    : null
+        }
     },
     created()
     {
@@ -36,6 +38,12 @@ createApp(
                 {
                     this.api_data = res.data;
                 });
+        },
+
+        full_screen(index)
+        {
+            this.overlay_bool = true;
+            this.clicked_card = this.api_data[index];
         }
     }
 }).mount('#vue_app')
