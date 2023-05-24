@@ -7,7 +7,8 @@
     <!-- Link a Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Link al foglio di stile -->
-    <link rel="stylesheet" href="./style.css">
+    <!-- <link href="./style.css" media="screen" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" href="style.css">
     <title>Dischi JSON</title>
 </head>
 <body>
@@ -17,16 +18,17 @@
             <h1 class="text-center text-primary">Spotify Records</h1>
         </header>
         <main class="d-flex justify-content-center align-items-start pt-4">
-            <div id="card_set" class="w-75 row flex-wrap justify-content-between align-items-center">
+            <div id="card_set" class="row flex-wrap justify-content-between align-items-center">
                 <div class="card"
                  v-for="(item, index) in api_data"
                  :key="index"
                 >
-                    <img :src="item.poster" class="card-img-top h-50" :alt="item.author">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick ehe card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <img :src="item.poster" class="card-img-top mx-auto my-2" :alt="item.author">
+                    <div class="card-body m-0 p-0 text-center text-white">
+                        <h6 class="card-title">{{ item.title }}</h6>
+                        <span class="card-text text-info" style="font-size: medium;">{{ item.author }}</span>
+                        <span class="card-text d-block" style="font-size: small;">{{ item.year }}</span>
+                        <h6 class="text-success">{{item.genre}}</h6>
                     </div>
                 </div>
             </div>

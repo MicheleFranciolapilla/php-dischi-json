@@ -5,7 +5,7 @@
 
 header
 {
-    height: 10vh;
+    height: 7vh;
     background-color: #06131F;
 }
 
@@ -18,23 +18,30 @@ header > img
 
 main
 {
-    height: 90vh;
+    height: 93vh;
 }
 
 main > #card_set
 {
-    height: 90%;
-    border: 3px solid yellow;
+    width: 60%;
+    height: 95%;
+    gap: 50px;
 }
 
 .card
 {
-    flex-basis: 30%;
-    height: 45%;
+    flex-basis: calc((100% - 100px) / 3);
+    height: calc((100% - 50px) / 2);
     background-color: #112030;
+}
+
+.card:hover
+{
+    cursor: pointer;
+    background-color: blue;
 }
 
 .card > img
 {
-    aspect-ratio: 1;
+    width: 65%;
 }
