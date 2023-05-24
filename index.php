@@ -35,14 +35,13 @@
             </div>
         </main>
         <div v-if="overlay_bool" id="full_screen">
-            <div id="overlay">
+            <div id="overlay" class="d-flex justify-content-end">
+                <button type="button" class="btn btn-outline-light align-self-start m-3" v-on:click="overlay_bool = false">Indietro</button>
             </div>
-                <img :src="clicked_card.poster" class="card-img-top mx-auto my-2" :alt="clicked_card.author">
-                <div class="card-body mx-auto p-1 text-center text-white">
-                    <h6 class="card-title">{{ clicked_card.title }}</h6>
-                    <span class="card-text text-info" style="font-size: medium;">{{ clicked_card.author }}</span>
-                    <span class="card-text d-block" style="font-size: small;">{{ clicked_card.year }}</span>
-                    <h6 class="text-success">{{clicked_card.genre}}</h6>
+                <div id="full_screen_card">
+                    <img :src="clicked_card.poster" class="card-img-top" :alt="clicked_card.author">
+                    <h3 class="text-primary">{{ clicked_card.author }}</h3>
+                    <h5 class="text-white">{{ clicked_card.title }}</h5>
                 </div>
         </div>
     </div>

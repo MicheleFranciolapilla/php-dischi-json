@@ -11,18 +11,28 @@
     left: 2.5%;
     top: 2.5%;
     background-color: rgb(20, 20, 42);
-    opacity: 0.85;
+    opacity: 0.95;
     border-radius: 5px;
 }
 
-#full_screen img
+#full_screen_card
 {
     position: absolute;
     width: 33%;
-    aspect-ratio: 1;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+#full_screen_card img
+{
+    width: 100%;
+    aspect-ratio: 1;
+    border: 5px solid white;
 }
 
 header
