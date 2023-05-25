@@ -17,32 +17,38 @@ createApp(
     data() 
     {
         return  {
+            // headers_obj contiene l'oggetto da passare alle chiamate axios.POST
             headers_obj         : {headers : { 'Content-Type' : 'multipart/form-data' }},
+            // File JSON che viene creato ad ogni avvio di programma ed utilizzato nei metodi CRUD
             json_archive        : "records.json",
+            // File PHP in cui si trova l'array originario
             php_archive         : "records.php",
+            // Le variabili seguenti contengono gli url parziali ai sotto-programmi php di creazione del file JSON e dei metodi CRUD
             api_folder          : "./api_files/",
             api_create_json_url : "create_json.php",
             api_CRUD_index_url  : "api_CRUD_index.php",
             api_CRUD_show_url   : "api_CRUD_show.php",
+            // Variabile che raccoglie l'intero array dei dischi (nel metodo CRUD index)
             api_data            : "",
             // overlay_bool, quando settato a true consente il passaggio alla modalità full screen con card in formato maxi su overlay opaco
             overlay_bool        : false,
-            // oggetto che conterrà i dati della card cliccata
+            // oggetto che conterrà i dati della card cliccata (popolato nel metodo CRUD show)
             clicked_card        : {}
         }
     },
     created()
     {
+        // Generazione del file JSON a partire dall'array originario in formato PHP
         this.api_create_json_method();
     },
     mounted()
     {
-        // Chiamata alla API per acquisizione dati
+        // Chiamata CRUD index per acquisizione dati da file JSON
         this.api_CRUD_index_method();
     },
     methods: 
     {
-
+        // Generatore del file JSON. Invocato in created
         api_create_json_method()
         {
             const   records_files = {
@@ -52,7 +58,7 @@ createApp(
             axios.post(this.api_folder + this.api_create_json_url, records_files, this.headers_obj);
         },
 
-        // Metodo incaricato della chiamata alla API
+        // Metodo per il popolamento dell'array dei dati. Invocato in mounted
         api_CRUD_index_method()
         {
             axios.get(this.api_folder + this.api_CRUD_index_url).then( res =>
@@ -61,6 +67,7 @@ createApp(
                 });
         },
 
+        // Metodo per l'acquisizione dei dati del singolo disco. Invocato da full_screen (al click)
         api_CRUD_show_method(index)
         {
             const   CRUD_obj =  {

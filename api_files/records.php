@@ -1,3 +1,4 @@
+<!-- File che funge da database iniziale di tutta la collezione di dischi. Viene utilizzato da "create_json.php" per creare il corrispettivo file JSON -->
 <?php
   $records_array =  [
                       [

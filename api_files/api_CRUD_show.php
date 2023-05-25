@@ -1,3 +1,4 @@
+<!-- Sotto-programma che consente l'acquisizione da parte del chiamante del disco richiesto (metodo CRUD show) -->
 <?php
     session_start();
     if (isset($_POST['record_index']))

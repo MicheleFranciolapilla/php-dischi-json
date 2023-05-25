@@ -1,3 +1,4 @@
+<!-- Sotto-programma per la finalizzazione del metodo CRUD index che consente l'acquisizione dell'intera collezione di dati da parte del chiamante -->
 <?php
   session_start();
   $json_file = $_SESSION['json_file'];
