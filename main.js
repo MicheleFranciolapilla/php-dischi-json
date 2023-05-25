@@ -22,7 +22,7 @@ createApp(
             php_archive         : "records.php",
             api_folder          : "./api_files/",
             api_create_json_url : "create_json.php",
-            api_url             : "api.php",
+            api_CRUD_index_url  : "api_CRUD_index.php",
             api_data            : "",
             // overlay_bool, quando settato a true consente il passaggio alla modalità full screen con card in formato maxi su overlay opaco
             overlay_bool    : false,
@@ -37,7 +37,7 @@ createApp(
     mounted()
     {
         // Chiamata alla API per acquisizione dati
-        this.call_to_api();
+        this.api_CRUD_index_method();
     },
     methods: 
     {
@@ -52,9 +52,12 @@ createApp(
         },
 
         // Metodo incaricato della chiamata alla API
-        call_to_api()
+        api_CRUD_index_method()
         {
-            axios.get(this.api_folder + this.api_url).then( res =>
+            const   CRUD_data = {
+                                    json_source : this.json_archive
+                                };
+            axios.post(this.api_folder + this.api_CRUD_index_url, CRUD_data, this.headers_obj).then( res =>
                 {
                     this.api_data = res.data;
                 });
