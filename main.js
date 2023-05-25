@@ -17,8 +17,12 @@ createApp(
     data() 
     {
         return  {
-            api_url         : "./api.php",
-            api_data        : "",
+            json_archive        : "records.json",
+            php_archive         : "records.php",
+            api_folder          : "./api_files/",
+            api_create_json_url : "create_json.php",
+            api_url             : "api.php",
+            api_data            : "",
             // overlay_bool, quando settato a true consente il passaggio alla modalità full screen con card in formato maxi su overlay opaco
             overlay_bool    : false,
             // oggetto che conterrà i dati della card cliccata
@@ -27,6 +31,7 @@ createApp(
     },
     created()
     {
+        this.api_create_json_method();
     },
     mounted()
     {
@@ -35,10 +40,19 @@ createApp(
     },
     methods: 
     {
+
+        api_create_json_method()
+        {
+            axios.get(this.api_folder + this.api_create_json_url).then( res => 
+                {
+                    this.api_data = res.data;
+                });
+        },
+
         // Metodo incaricato della chiamata alla API
         call_to_api()
         {
-            axios.get(this.api_url).then( res =>
+            axios.get(this.api_folder + this.api_url).then( res =>
                 {
                     this.api_data = res.data;
                 });
