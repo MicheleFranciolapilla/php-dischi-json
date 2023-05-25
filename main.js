@@ -23,11 +23,12 @@ createApp(
             api_folder          : "./api_files/",
             api_create_json_url : "create_json.php",
             api_CRUD_index_url  : "api_CRUD_index.php",
+            api_CRUD_show_url   : "api_CRUD_show.php",
             api_data            : "",
             // overlay_bool, quando settato a true consente il passaggio alla modalità full screen con card in formato maxi su overlay opaco
-            overlay_bool    : false,
+            overlay_bool        : false,
             // oggetto che conterrà i dati della card cliccata
-            clicked_card    : null
+            clicked_card        : {}
         }
     },
     created()
@@ -60,11 +61,22 @@ createApp(
                 });
         },
 
+        api_CRUD_show_method(index)
+        {
+            const   CRUD_obj =  {
+                                    record_index    : index
+                                };
+            axios.post(this.api_folder + this.api_CRUD_show_url, CRUD_obj, this.headers_obj).then( res =>
+                {
+                    this.clicked_card = res.data;
+                });
+        },
+
         // Metodo che consente il passaggio alla modalità full screen con card in formato maxi su overlay opaco
         full_screen(index)
         {
+            this.api_CRUD_show_method(index);
             this.overlay_bool = true;
-            this.clicked_card = this.api_data[index];
         }
     }
 }).mount('#vue_app')
