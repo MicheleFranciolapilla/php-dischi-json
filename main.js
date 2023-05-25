@@ -54,10 +54,7 @@ createApp(
         // Metodo incaricato della chiamata alla API
         api_CRUD_index_method()
         {
-            const   CRUD_data = {
-                                    json_source : this.json_archive
-                                };
-            axios.post(this.api_folder + this.api_CRUD_index_url, CRUD_data, this.headers_obj).then( res =>
+            axios.get(this.api_folder + this.api_CRUD_index_url).then( res =>
                 {
                     this.api_data = res.data;
                 });
