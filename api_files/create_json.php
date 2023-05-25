@@ -1,4 +1,3 @@
-<!-- Sotto-programma incaricato di generare e popolare il file JSON contenente tutta la collezione di dischi -->
 <?php
     session_start();
     if (isset($_POST['php_source']) && isset($_POST['json_destination']))
