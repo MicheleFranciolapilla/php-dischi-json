@@ -17,6 +17,7 @@ createApp(
     data() 
     {
         return  {
+            headers_obj         : {headers : { 'Content-Type' : 'multipart/form-data' }},
             json_archive        : "records.json",
             php_archive         : "records.php",
             api_folder          : "./api_files/",
@@ -43,10 +44,11 @@ createApp(
 
         api_create_json_method()
         {
-            axios.get(this.api_folder + this.api_create_json_url).then( res => 
-                {
-                    this.api_data = res.data;
-                });
+            const   records_files = {
+                                        php_source          : this.php_archive,
+                                        json_destination    : this.json_archive
+                                    };
+            axios.post(this.api_folder + this.api_create_json_url, records_files, this.headers_obj);
         },
 
         // Metodo incaricato della chiamata alla API
