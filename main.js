@@ -29,7 +29,7 @@ createApp(
             api_CRUD_index_url  : "api_CRUD_index.php",
             api_CRUD_show_url   : "api_CRUD_show.php",
             // Variabile che raccoglie l'intero array dei dischi (nel metodo CRUD index)
-            api_data            : "",
+            api_data            : [],
             // overlay_bool, quando settato a true consente il passaggio alla modalità full screen con card in formato maxi su overlay opaco
             overlay_bool        : false,
             // oggetto che conterrà i dati della card cliccata (popolato nel metodo CRUD show)
@@ -49,22 +49,33 @@ createApp(
     methods: 
     {
         // Generatore del file JSON. Invocato in created
-        api_create_json_method()
+        async api_create_json_method()
         {
             const   records_files = {
                                         php_source          : this.php_archive,
                                         json_destination    : this.json_archive
                                     };
-            axios.post(this.api_folder + this.api_create_json_url, records_files, this.headers_obj);
+            await axios.post(this.api_folder + this.api_create_json_url, records_files, {headers : { 'Content-Type' : 'multipart/form-data' }});
         },
 
         // Metodo per il popolamento dell'array dei dati. Invocato in mounted
-        api_CRUD_index_method()
+        async api_CRUD_index_method()
         {
-            axios.get(this.api_folder + this.api_CRUD_index_url).then( res =>
-                {
-                    this.api_data = res.data;
-                });
+            let counter = 0;
+            let status = 0;
+            do
+            {
+                counter++;
+                await axios.get(this.api_folder + this.api_CRUD_index_url)
+                    .then( res =>
+                        {
+                            this.api_data = res.data;
+                            status = res.request.status;
+                            console.log(this.api_data);
+                            console.log(res.request);
+                        });
+                console.log(counter);
+            } while ((status != 200) && (counter < 100))
         },
 
         // Metodo per l'acquisizione dei dati del singolo disco. Invocato da full_screen (al click)
@@ -73,7 +84,7 @@ createApp(
             const   CRUD_obj =  {
                                     record_index    : index
                                 };
-            axios.post(this.api_folder + this.api_CRUD_show_url, CRUD_obj, this.headers_obj).then( res =>
+            axios.post(this.api_folder + this.api_CRUD_show_url, CRUD_obj, {headers : { 'Content-Type' : 'multipart/form-data' }}).then( res =>
                 {
                     this.clicked_card = res.data;
                 });
